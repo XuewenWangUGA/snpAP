@@ -1,4 +1,5 @@
-
+# snpAD an ancient-DNA aware genotyper
+#This version of snpAD is cloned from https://bioinf.eva.mpg.de/snpAD/ for learning purpose
 
 This is snpAD release 0.3.5, an ancient DNA aware genotype caller.
 
