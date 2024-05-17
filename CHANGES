@@ -1,0 +1,36 @@
+
+0.3.5
+- link nlopt dynamically (compiles on new Ubuntu)
+- allow file or string for priors when running snpADcall 
+
+0.3.4
+- snpADci to calculate box confidence intervals. 
+  Use -M when you want to sum over the individual confidence 
+  intervals of heterozygous genotypes to get confidence intervals on 
+  heterozygosity.
+- new option -min_gtfreq for snpAD. Use this option if you analyze 
+  samples with high heterozygosity (>>1e-4) or if you genotype data
+  that is enriched for heterozygous sites (e.g. capture data of known SNPs).
+- fixed bug that caused segfault. Thanks to Stephen Clayton for reporting!
+
+0.3.3
+- print Genotype Likelihoods (snpADCall --gl). Thanks to Swapan Mallick 
+  for requesting this.
+- Fix: running with --no_repeat does not reestimate error profile
+
+0.3.2
+- Bam2snpAD option --merge_ends to assume identical error profiles for 3' and 5' ends 
+  (request by anonymous reviewer).
+
+0.3.1
+- snpAD option --fast to estimate only ts and tv (inspired by referee question). 
+- Bam2snpAD options --min_qual and --max_qual to limit both minimum and maximum 
+  quality of reads considered. Allows error profiles to be estimated separately
+  for bins of quality (inspired by referee question)
+- Estimate base composition not as a score (sum of probabilities for a given base over 
+  all reads) but as an actual likelihood (product of probabilities). Thanks to 
+  Fernando Racimo for pointing that out. 
+
+0.3.0
+- Release for snpAD publication.
+

@@ -1,0 +1,55 @@
+.TH BamToSnpAD "1" "July 2016" "BamToSnpAD" "User Commands"
+.SH NAME
+BamToSnpAD - generates snpAD input format from bam.
+.SH SYNOPSIS
+.B BamToSnpAD
+[\fIOPTIONS\fR]*\fI <bamfile>\fR
+.SH DESCRIPTION
+.B BamToSnpAD 
+generates input files for 
+.B snpAD 
+from an indexed bam file. For each genomic position the output lists the
+observed bases in sequences, the orientation of the sequences and the distance from
+sequence ends. The distance from sequence ends are labelled by default 0..14 for bases 1-15 from the 5'-end, 
+15..29 for bases 1-15 from the 3' end and 30 for all bases farther than 15 basepairs from either sequence end.
+The distance from the ends and the numbering can be adjusted with options \fB\-s\fR and \fB\-o\fR.
+.SH OPTIONS
+.TP
+\fB\-i\fR, \fB\-\-bam_index\fR=\fIbai_file\fR
+use the index bai_file
+.TP
+\fB\-r\fR, \fB\-\-reference\fR=\fIREF\fR
+restrict to sequences aligning to reference
+REF (e.g. "chr1" or "1"). Requires a bam-index file with matching filename and suffix .bai or a valid index file specified by the option \fB\-i\fR 
+.TP
+\fB\-R\fR, \fB\-\-readgroups\fR=\fIRGs\fR
+restrict to sequences belonging to a set of comma-separated readgroups 
+.TP
+\fB\-Q\fR, \fB\-\-map_qual\fR=\fIMQ\fR
+minimum mapping quality MQ (default: 30)
+.TP
+\fB\-q\fR, \fB\-\-base_qual\fR=\fIQ\fR
+base quality score Q (default: 30)
+.TP
+\fB\-s\fR, \fB\-\-size\fR=\fIN\fR
+N bases on either side are labelled (default: 15)
+.TP
+\fB\-o\fR, \fB\-\-offset\fR=\fIN\fR
+Add N to the labels for the distance to sequence ends (default: 0)
+.TP
+\fB\-P\fR, \fB\-\-nopaired\fR
+ignore paired end reads
+.SS "Help options:"
+.TP
+\-?, \fB\-\-help\fR
+Show this help message
+.TP
+\fB\-\-usage\fR
+Display brief usage message
+.SH COPYRIGHT
+BamToSnpAD is freely available under the conditions of the MIT License.
+.SH AUTHORS
+Kay Prüfer
+
+.SH REPORTING BUGS
+Report bugs to <pruefer@eva.mpg.de>
