@@ -9,6 +9,7 @@ Type this command in command terminal:
 `python3 snpAlleleProbability.py`
 
 # Usage: 
+
   python3 snpAlleleProbability.py [options]
     Options:
     -h, --help                  Show this help message and exit
