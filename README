@@ -1,7 +1,12 @@
 
 # snpAlleleProbability is a bioinformatic tool to calculate the likelyhood of snp alleles
 
-#usage: 
+# run
+type this command in command terminal:
+
+`python3 snpAlleleProbability.py`
+
+# usage: 
       Usage: python3 snpAlleleProbability.py [options]
     Options:
     -h, --help                  Show this help message and exit
@@ -32,7 +37,11 @@
   chr22	10572984	C	G	.
 
 
-# Dependency: snpAD an ancient-DNA aware genotyper
+# Dependencies: 
+1. python3
+
+2. snpAD an ancient-DNA aware genotyper
+The following is the snpAD. The user needs to compile snp and them put the compliled three files in the same directory of snpAlleleProbability
 #This version of snpAD is cloned from https://bioinf.eva.mpg.de/snpAD/ for learning purpose
 
 This is snpAD release 0.3.5, an ancient DNA aware genotype caller.
