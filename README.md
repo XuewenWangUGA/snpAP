@@ -10,17 +10,18 @@ Type this command in command terminal:
 
 # Usage: 
 
-  python3 snpAlleleProbability.py [options]
+        Usage: python3 snpAlleleProbability.py [options]
     Options:
     -h, --help                  Show this help message and exit
     -a, --alignment=FILE        Input BAM file for alignment, the bam index file .bai should be present
     -t, --thread=NUMBER         Number of threads to use,default [12]
     -r, --reference=FILE        Reference genome file in FASTA format
-    -b, --bed=FILE              1-based position file with regions of interest
+    -b, --bed=FILE              BED file with regions of interest
     -o, --outprefix=PREFIX      Output prefix for result files
     -c, --chromosomeFile=FILE   Chromosome list, tab separtated text file, e.g. chr1 chr2 chr3
     -q, --quality=INT           The qulaity of mapped reads,default [25]
     version 1.0
+
 
 
 # Input
