@@ -1,5 +1,7 @@
 
-# snpAlleleProbability is a bioinformatic tool to calculate the likelyhood of snp alleles
+# SAP for snp Allele Probability
+
+snpAlleleProbability (SAP) is a bioinformatic tool to calculate the likelyhood of snp alleles
 
 # run
 type this command in command terminal:
@@ -22,13 +24,13 @@ type this command in command terminal:
 
 # input
 
-1. SNP target site file
+1. SNP target site file, 1-based, tab separated four columns for each variant site: #Chr	Position_1-based	Allele_1	Allele_2
 2. alignment in cram or bam format
 3. reference sequence, e.g. hg38
 
 
-# output
-
+# Output
+ 1.  a tsv file with likelyhood for each targeted site. 
   #Chr	Position_1-based	Allele_1	Allele_2	Likelihood_Hom1:Het:Hom2
   chr21	5034230	C	T	0:30:44
   chr21	5034244	C	T	0:33:89
@@ -36,11 +38,13 @@ type this command in command terminal:
   chr21	5034257	G	T	0:41:133
   chr22	10572984	C	G	.
 
+2. .vcf the output from snpAD
+   
 
 # Dependencies: 
 1. python3
-
-2. snpAD an ancient-DNA aware genotyper
+2. samtools
+3. snpAD an ancient-DNA aware genotyper
 The following is the snpAD. The user needs to compile snp and them put the compliled three files in the same directory of snpAlleleProbability.
 
 #This version of snpAD is cloned from https://bioinf.eva.mpg.de/snpAD/ for learning purpose
