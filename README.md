@@ -34,12 +34,12 @@ Type this command in command terminal:
 
 # Output
  1.  a tsv file with likelyhood for each targeted site. 
-  #Chr	Position_1-based	Allele_1	Allele_2	Likelihood_Hom1:Het:Hom2
-  chr21	5034230	C	T	0:30:44
-  chr21	5034244	C	T	0:33:89
-  chr21	5034245	G	A	.
-  chr21	5034257	G	T	0:41:133
-  chr22	10572984	C	G	.
+          #Chr	Position_1-based	Allele_1	Allele_2	Likelihood_Hom1:Het:Hom2
+          chr21	5034230	C	T	0:30:44
+          chr21	5034244	C	T	0:33:89
+          chr21	5034245	G	A	.
+          chr21	5034257	G	T	0:41:133
+          chr22	10572984	C	G	.
 
 2. .vcf the output from snpAD
    
