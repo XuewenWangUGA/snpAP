@@ -1,7 +1,7 @@
 
 # SnpAP for snp Allele Probability
 
-snpAlleleProbability (SnpAP) is a bioinformatic tool to calculate the likelyhood of snp alleles
+The snpAlleleProbability (SnpAP) is a bioinformatic tool to calculate the likelyhood of snp alleles
 
 # Run
 Type this command in command terminal:
