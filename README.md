@@ -163,3 +163,7 @@ snpADCall -N Sample-Name -e errors.txt -p "`cat priors.txt`" input.snpAD > outpu
 
 --------
 
+
+# Developement
+
+This tool is under activate development, programmed by Xuewen Wang. 
