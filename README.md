@@ -1,10 +1,10 @@
 
-# SAP for snp Allele Probability
+# SnpAP for snp Allele Probability
 
-snpAlleleProbability (SAP) is a bioinformatic tool to calculate the likelyhood of snp alleles
+snpAlleleProbability (SnpAP) is a bioinformatic tool to calculate the likelyhood of snp alleles
 
 # Run
-type this command in command terminal:
+Type this command in command terminal:
 
 `python3 snpAlleleProbability.py`
 
@@ -51,7 +51,7 @@ type this command in command terminal:
 
 Download this tool from github via .zip by click on the webpage or the command:
 
-`git clone https://github.com/XuewenWangUGA/snpAD`
+`git clone https://github.com/XuewenWangUGA/snpAP`
 
 # Installation of SnpAD:
 The following is the snpAD. The user needs to compile snp and them put the compliled three files in the same directory of snpAlleleProbability.
