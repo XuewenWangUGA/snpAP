@@ -55,6 +55,35 @@ Download this tool from github via .zip by click on the webpage or the command:
 
 `git clone https://github.com/XuewenWangUGA/snpAP`
 
+
+# utility: snpAD_bamFix
+
+The snpAD_bamFix will fix issues which may happend when calling orginal snpAD. To run the snpAD_bamFix first and then use the fixed bam for snpAP.
+
+This tool takes .cram or .bam as input.
+
+to run, type this in command line:
+`./snpAD_bamFix.sh`
+
+        ./snpAD_bamFix.sh
+No arguments provided
+Usage: ./snpAD_bamFix.sh [options]
+
+Options:
+  -h, --help    Display this help message
+  -v, --version Display the version number
+  -i, --input   an input directory with cram or bam files
+  -o, --output  an output directory to store fixed bam files
+  -f, --format  the format of input alignment files: cram or bam, default [bam]
+  -r, --reference  the file name of the reference fasta, default [hg38]
+  -t, --thread  int, the number of paralelle computing threads, default [40]
+ e.g.: ./snpAD_bamFix.sh -i inputBamDir -o outFixBamDir-f alignment_format -r ref_genomeFasta_file -t threadNumber
+
+
+
+
+
+
 # Installation of SnpAD:
 The following is the snpAD. The user needs to compile snp and them put the compliled three files in the same directory of snpAlleleProbability.
 
