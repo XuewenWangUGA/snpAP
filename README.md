@@ -26,9 +26,10 @@ Type this command in command terminal:
 
 # Input
 
-1. SNP target site file, 1-based, tab separated four columns for each variant site: #Chr	Position_1-based	Allele_1	Allele_2
-2. alignment in cram or bam format
-3. reference sequence, e.g. hg38
+1. SNP target site file, 1-based, tab separated four columns for each variant site:
+           #Chr	Position_1-based	Allele_1	Allele_2
+3. alignment in cram or bam format
+4. reference sequence, e.g. hg38
 
 
 # Output
