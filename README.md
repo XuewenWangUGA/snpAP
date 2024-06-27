@@ -33,7 +33,7 @@ Type this command in command terminal:
 
 
 # Output
- 1.  a tsv file with likelyhood for each targeted site.
+ 1.  a tsv file with likelihood for each targeted site. the smaller the value means the higher confident allele.
 
           #Chr	Position_1-based	Allele_1	Allele_2	Likelihood_Hom1:Het:Hom2
           chr21	5034230	C	T	0:30:44
