@@ -47,6 +47,11 @@ type this command in command terminal:
 3. snpAD an ancient-DNA aware genotyper
 
 
+# Installation
+
+Download this tool from github via .zip by click on the webpage or the command:
+
+`git clone https://github.com/XuewenWangUGA/snpAD`
 
 # Installation of SnpAD:
 The following is the snpAD. The user needs to compile snp and them put the compliled three files in the same directory of snpAlleleProbability.
