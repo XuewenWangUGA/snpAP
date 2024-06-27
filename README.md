@@ -157,11 +157,7 @@ snpAD -c 40 -o priors.txt -O errors.txt input.snpAD > log.tab 2> log.err
 == Write the VCF file ==
 
 You can then use snpADcall to convert the snpAD inputfile to a VCF file:
-
 snpADCall -N Sample-Name -e errors.txt -p "`cat priors.txt`" input.snpAD > output.VCF
 
-
-License:
 --------
 
-snpAD is free software (GNU General Public License v3). Note that this package includes 
