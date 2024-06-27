@@ -1,4 +1,38 @@
-# snpAD an ancient-DNA aware genotyper
+
+# snpAlleleProbability is a bioinformatic tool to calculate the likelyhood of snp alleles
+
+#usage: 
+      Usage: python3 snpAlleleProbability.py [options]
+    Options:
+    -h, --help                  Show this help message and exit
+    -a, --alignment=FILE        Input BAM file for alignment, the bam index file .bai should be present
+    -t, --thread=NUMBER         Number of threads to use,default [12]
+    -r, --reference=FILE        Reference genome file in FASTA format
+    -b, --bed=FILE              1-based position file with regions of interest
+    -o, --outprefix=PREFIX      Output prefix for result files
+    -c, --chromosomeFile=FILE   Chromosome list, tab separtated text file, e.g. chr1 chr2 chr3
+    -q, --quality=INT           The qulaity of mapped reads,default [25]
+    version 1.0
+
+
+# input
+
+1. SNP target site file
+2. alignment in cram or bam format
+3. reference sequence, e.g. hg38
+
+
+# output
+
+  #Chr	Position_1-based	Allele_1	Allele_2	Likelihood_Hom1:Het:Hom2
+  chr21	5034230	C	T	0:30:44
+  chr21	5034244	C	T	0:33:89
+  chr21	5034245	G	A	.
+  chr21	5034257	G	T	0:41:133
+  chr22	10572984	C	G	.
+
+
+# Dependency: snpAD an ancient-DNA aware genotyper
 #This version of snpAD is cloned from https://bioinf.eva.mpg.de/snpAD/ for learning purpose
 
 This is snpAD release 0.3.5, an ancient DNA aware genotype caller.
