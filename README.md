@@ -3,13 +3,13 @@
 
 snpAlleleProbability (SAP) is a bioinformatic tool to calculate the likelyhood of snp alleles
 
-# run
+# Run
 type this command in command terminal:
 
 `python3 snpAlleleProbability.py`
 
-# usage: 
-      Usage: python3 snpAlleleProbability.py [options]
+# Usage: 
+ python3 snpAlleleProbability.py [options]
     Options:
     -h, --help                  Show this help message and exit
     -a, --alignment=FILE        Input BAM file for alignment, the bam index file .bai should be present
@@ -22,7 +22,7 @@ type this command in command terminal:
     version 1.0
 
 
-# input
+# Input
 
 1. SNP target site file, 1-based, tab separated four columns for each variant site: #Chr	Position_1-based	Allele_1	Allele_2
 2. alignment in cram or bam format
@@ -45,14 +45,14 @@ type this command in command terminal:
 1. python3
 2. samtools
 3. snpAD an ancient-DNA aware genotyper
+
+
+
+# Installation of SnpAD:
 The following is the snpAD. The user needs to compile snp and them put the compliled three files in the same directory of snpAlleleProbability.
 
-#This version of snpAD is cloned from https://bioinf.eva.mpg.de/snpAD/ for learning purpose
+This version of snpAD 0.3.5 is cloned from https://bioinf.eva.mpg.de/snpAD/ and tested to run our tool. 
 
-This is snpAD release 0.3.5, an ancient DNA aware genotype caller.
-
-
-Installation:
 -------------
 
 To compile, run make. You'll need:
