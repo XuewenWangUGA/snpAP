@@ -28,6 +28,7 @@ def print_help():
     -o, --outprefix=PREFIX      Output prefix for result files 
     -c, --chromosomeFile=FILE   Chromosome list, tab separtated text file, e.g. chr1 chr2 chr3
     -q, --quality=INT           The qulaity of mapped reads,default [25]
+    -n, --normal                T|F. T will normalize the most likely PL to 0, default [F]
     version 1.0
     """
     print(help_message)
@@ -42,6 +43,7 @@ def xpar(argv):
     refGenome="hg38.fasta"
     threadn="12"
     quality="25"
+    normal="F"
 
     if not argv:
         print_help()
@@ -51,10 +53,10 @@ def xpar(argv):
     # python $d/scripts/snpAdWrapper.py -c $d/realData/chrList.txt -a $d/realData/SC_GMWOF5428715.alt_bwamem_GRCh38DH.20151208.WOLOFF.gambian_lowcov.2122.bam -t 40 -f /eva/edatums/reference_materials/reference_genomes/hg38/GRCh38_full_analysis_set_plus_decoy_hla.fa -o $d/realData/testPy -b hgdp1kgp_autos.filtered.SNV_INDEL.phased.shapeit5.unrelateds.nopp.biallelicsnps.tsv
 
     try:
-        opts, args = getopt.getopt(argv, "ha:t:f:b:o:c:q:", ["alignment=", "thread=","fastaseq=",
-                                                          "bed=","outprefix=","chromosomeFile=","quality="])
+        opts, args = getopt.getopt(argv, "ha:t:f:b:o:c:q:n", ["alignment=", "thread=","fastaseq=",
+                                                          "bed=","outprefix=","chromosomeFile=","quality=","normal"])
     except getopt.GetoptError:
-        print(f"python3 {script_name} [options] \n version 1.0 \n for help: python3 {script_name} -h")
+        print(f"python {script_name} [options] \n version 1.0 \n for help: python3 {script_name} -h")
         sys.exit(1)
     for opt, arg in opts:
         if opt == '-h':
@@ -74,9 +76,11 @@ def xpar(argv):
             chrFile = arg
         elif opt in ("-q", "--quality"):
             quality = arg
+        elif opt in ("-n", "--normal"):
+            normal= arg
         else:
             print("unknown option")
-    return bam, threadn, refGenome, bed, prefix,chrFile,quality
+    return bam, threadn, refGenome, bed, prefix,chrFile,quality, normal
 
 def parseSnpVcf(inVcf):
     ##get genotype and PL for vcf sites
@@ -104,10 +108,40 @@ def getSnpGenotypeLikelihood(likehood):
     likehoodDict={"AA":aa, "CC":cc, "GG":gg, "TT":tt,"AC":ac,"AG":ag, "AT":at,"CG":cg, "CT":ct, "GT":gt}
     return likehoodDict
 
+def getNormlikelihoods(likelihoodsList):
+    minLh=min(likelihoodsList)
+    normlikelihoodsList=[]
+    if minLh >0:
+        for L in likelihoodsList:
+            normlikelihoodsList.append(L-minLh)
+        return normlikelihoodsList
+    else:
+        return likelihoodsList
+
+def creatNewVcfHeader(snpADvcfFileName: str):
+    # read in orginal vcf from snpAD output and then add new information to create a new header
+    with open(snpADvcfFileName) as svcf:
+        vcfHeadlines=[]
+        for line in svcf:
+            line=line.strip()
+            if line.startswith("#"):
+                if "FORMAT=<ID=PP" not in line:
+                    vcfHeadlines.append(line)
+            else:
+                continue
+        #add new infor
+        anno='##FORMAT=<ID=PL,Number=3,Type=Integer,Description="Phred-scaled likelyhood for genotypes hom1, het, and hom2"'
+        vcfHeadlines.insert(-1,anno)
+        headInfo='\n'.join(vcfHeadlines)
+        return  headInfo
+
+
+
+
 
 if __name__=='__main__':
     #get options
-    bam, threadn, refGenome, bed, prefix,chrFile,quality=xpar(sys.argv[1:])
+    bam, threadn, refGenome, bed, prefix,chrFile,quality,normal=xpar(sys.argv[1:])
     cmd=directory_name+separator+"Bam2snpAD_AW"
     Bam2snpADopts_run=[cmd, "-F", chrFile ,"-f", refGenome,  "-Q", quality, "-i", bam+".bai", bam]
     #if bed != "":
@@ -136,9 +170,14 @@ if __name__=='__main__':
 
     print("done snpAD")
 
+    #prepare new header of vcf
+    outVcf="C:/snpADtestData/chr21chr22.snpADtestSmall.vcf"
+    newHeader=creatNewVcfHeader(outVcf)
+    print(newHeader)
+
 
     ##add genotype likelyhood to tsv sites
-    print("run: to get genotype likelyhood for target sites in tsv file")
+    print("run: to get genotype likelihood for target sites in tsv file")
     #outvcf = "/media/xuewen/data12T/snpADanalysis/chr21chr22.snpADtestSmall.vcf"
     insnpADVcf = "C:\snpADtestData\chr21chr22.snpADtestSmall.vcf"
 
@@ -146,6 +185,8 @@ if __name__=='__main__':
     #targetSites = "/media/xuewen/data12T/snpADanalysis/hgdp1kgp_autos.filtered.SNV_INDEL.phased.shapeit5.unrelateds.nopp.biallelicsnps.tsv"
     targetSites = "C:\snpADtestData\hgdp1kgp_autos.chr2122.testSmall.tsv"
 
+    
+    PLmaxi=1000000
     with open(targetSites,'rt') as TS:
         for site in TS:
             #chr1	14487	G	A
@@ -158,10 +199,34 @@ if __name__=='__main__':
                 glhoods=[]
                 for gtype in sgenotypes:
                     glhood=getSnpGenotypeLikelihood(allLikelyhoods)[gtype]
+                    if int(glhood) >= PLmaxi:
+                        glhood=PLmaxi
                     glhoods.append(glhood)
-                print(site+"\t"+":".join(glhoods))
+
+                # normal PL
+                if normal=="T":
+                    glhoods=getNormlikelihoods(glhoods).copy()
+
+                plvalues = ":".join(glhoods)
+                #add id to 3rd column for scell1to5
+                #col6-10:
+                col6to10=['.','.','.','GT:PL','0/0:'+plvalues]
+                scells.insert(2, '.')
+                scells.extend(col6to10) #oneVcfLine
+                print("\t".join(scells))
             else:
-                print(site + "\t" + ".")
+                col6to10 = ['.', '.', '.', 'GT:PP', '0/0:.:.:.']
+                scells.insert(2, '.')
+                scells.extend(col6to10)
+                print("\t".join(scells))
+
+    # to do: Pl int range(done), norm 10,20,30 >>>0,10,20 (done); min genotype Quality (), vcf output(done)
+
+    #vcf output
+    # CHROM  POS     ID      REF     ALT     QUAL    FILTER  INFO    FORMAT  gambian_lowcov
+   # chr21    5030315 .T.     28..GT: DP:A: C:G: T:PP: GQ     0 / 0: 1:0, 0: 0, 0: 0, 0: 0, 1: 45, 46, 46, 0, 77, 73, 37, 79, 31, 36: 31
+
+
 
 
 
