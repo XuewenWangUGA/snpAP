@@ -36,21 +36,21 @@ Type this command in command terminal:
  1.  a plaint text  file in standard VCF format with likelihood for each targeted site. the smaller the value means the higher confident allele.
 
 
-        ##fileformat=VCFv4.1
-        ##FORMAT=<ID=A,Number=2,Type=Integer,Description="Number of A bases on forward and reverse strand">
-        ##FORMAT=<ID=C,Number=2,Type=Integer,Description="Number of C bases on forward and reverse strand">
-        ##FORMAT=<ID=G,Number=2,Type=Integer,Description="Number of G bases on forward and reverse strand">
-        ##FORMAT=<ID=T,Number=2,Type=Integer,Description="Number of T bases on forward and reverse strand">
-        ##FORMAT=<ID=GT,Number=1,Type=String,Description="Genotype">
-        ##FORMAT=<ID=DP,Number=1,Type=Integer,Description="Read Depth">
-        ##FORMAT=<ID=GQ,Number=1,Type=Float,Description="Genotype Quality (difference between lowest and second lowest PP value)">
-        ##FORMAT=<ID=PL,Number=3,Type=Integer,Description="Phred-scaled likelyhood for genotypes hom1, het, and hom2"
-        #CHROM	POS	ID	REF	ALT	QUAL	FILTER	INFO	FORMAT	gambian_lowcov
-        chr21	5034230	.	C	T	.	.	.	GT:PL	0/0:0:30:44
-        chr21	5034244	.	C	T	.	.	.	GT:PL	0/0:0:33:89
-        chr21	5034245	.	G	A	.	.	.	GT:PP	0/0:.:.:.
-        chr21	5034257	.	G	T	.	.	.	GT:PL	0/0:0:41:133
-        chr22	10572984	.	C	G	.	.	.	GT:PP	0/0:.:.:.
+                ##fileformat=VCFv4.1
+                ##FORMAT=<ID=A,Number=2,Type=Integer,Description="Number of A bases on forward and reverse strand">
+                ##FORMAT=<ID=C,Number=2,Type=Integer,Description="Number of C bases on forward and reverse strand">
+                ##FORMAT=<ID=G,Number=2,Type=Integer,Description="Number of G bases on forward and reverse strand">
+                ##FORMAT=<ID=T,Number=2,Type=Integer,Description="Number of T bases on forward and reverse strand">
+                ##FORMAT=<ID=GT,Number=1,Type=String,Description="Genotype">
+                ##FORMAT=<ID=DP,Number=1,Type=Integer,Description="Read Depth">
+                ##FORMAT=<ID=GQ,Number=1,Type=Float,Description="Genotype Quality (difference between lowest and second lowest PP value)">
+                ##FORMAT=<ID=PL,Number=3,Type=Integer,Description="Phred-scaled likelyhood for genotypes hom1, het, and hom2"
+                #CHROM	POS	ID	REF	ALT	QUAL	FILTER	INFO	FORMAT	gambian_lowcov
+                chr21	5034230	.	C	T	.	.	.	GT:PL	0/0:0:30:44
+                chr21	5034244	.	C	T	.	.	.	GT:PL	0/0:0:33:89
+                chr21	5034245	.	G	A	.	.	.	GT:PP	0/0:.:.:.
+                chr21	5034257	.	G	T	.	.	.	GT:PL	0/0:0:41:133
+                chr22	10572984	.	C	G	.	.	.	GT:PP	0/0:.:.:.
 
 
 3. .vcf the output from snpAD
