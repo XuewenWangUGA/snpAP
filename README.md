@@ -33,7 +33,7 @@ Type this command in command terminal:
 
 
 # Output
- 1.  a plaint text  file in standard VCF format with likelihood for each targeted site. the smaller the value means the higher confident allele.
+ 1.  a plaint text  file in the standard VCF format with likelihood for each targeted site. the smaller the value means the higher confident allele.
 
 
                 ##fileformat=VCFv4.1
