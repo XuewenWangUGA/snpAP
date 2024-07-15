@@ -44,7 +44,7 @@ Type this command in command terminal:
                 ##FORMAT=<ID=GT,Number=1,Type=String,Description="Genotype">
                 ##FORMAT=<ID=DP,Number=1,Type=Integer,Description="Read Depth">
                 ##FORMAT=<ID=GQ,Number=1,Type=Float,Description="Genotype Quality (difference between lowest and second lowest PP value)">
-                ##FORMAT=<ID=PL,Number=3,Type=Integer,Description="Phred-scaled likelyhood for genotypes hom1, het, and hom2"
+                ##FORMAT=<ID=PL,Number=3,Type=Integer,Description="Phred-scaled likelyhood for genotypes hom1, het, and hom2">
                 #CHROM	POS	ID	REF	ALT	QUAL	FILTER	INFO	FORMAT	gambian_lowcov
                 chr21	5034230	.	C	T	.	.	.	GT:PL	0/0:0:30:44
                 chr21	5034244	.	C	T	.	.	.	GT:PL	0/0:0:33:89
