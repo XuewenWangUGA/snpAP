@@ -20,6 +20,8 @@ Type this command in a command terminal:
     -o, --outprefix=PREFIX      Output prefix for result files
     -c, --chromosomeFile=FILE   Chromosome list, tab separate text file, e.g. chr1 chr2 chr3
     -q, --quality=INT           The quality of mapped reads, default [25]
+    -m, --minqual=INT           the minimal quality score of the base for analysis [10]
+    -n, --normal                T|F. T will normalize the most likely PL to 0, default [F]    
     version 1.0
 
 
